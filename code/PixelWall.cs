@@ -37,11 +37,8 @@ public class PixelWall : RootPanel
 	public PixelWall()
 	{
 		Singleton = this;
-		AcceptsFocus = true;
 
 		AddClass( "game-board" );
-
-		Focus();
 	}
 
 	public void SetColor( string name, Color color, string displayname, string nameColor )
@@ -213,6 +210,7 @@ public class PixelWall : RootPanel
 			var color = Color.Parse( splits[1] );
 			if ( color.HasValue )
 			{
+				part = part.Replace( ',', '/' );
 				SetColor( part, color.Value, message.DisplayName, message.Color );
 				return true;
 			}
@@ -224,7 +222,7 @@ public class PixelWall : RootPanel
 		if ( splits.Length == 3 )
 		{
 			var part = splits[0].Trim( new[] { '/', ',' } ) + "/" + splits[1].Trim( new[] { '/', ',' } );
-			var color = Color.Parse( splits[3] );
+			var color = Color.Parse( splits[2] );
 			if ( color.HasValue )
 			{
 				SetColor( part, color.Value, message.DisplayName, message.Color );
