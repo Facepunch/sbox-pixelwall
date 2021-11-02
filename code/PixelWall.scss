@@ -1,0 +1,12 @@
+
+PixelWall
+{
+	background-color: rgba( #222, 0.95 );
+	backdrop-filter: blur( 5px );
+	pointer-events: all;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
