@@ -112,10 +112,10 @@ public class PixelWall : RootPanel
 
 		// scale everything we draw to the UI scale
 		var matrix = Matrix.CreateScale( ScaleToScreen ) * Matrix.CreateTranslation( Box.Rect.Position );
-		using var matrixScope = Render.UI.MatrixScope( matrix );
+		using var matrixScope = Render.Draw2D.MatrixScope( matrix );
 
 		// Turn clip off
-		Render.UI.Clip( null );
+		Render.Draw2D.Clip( null );
 
 		var rect = new Rect( Offsetleft, OffsetTop, BoardSize, BoardSize );
 
@@ -136,7 +136,7 @@ public class PixelWall : RootPanel
 
 				var cw = rect.width / Columns;
 				var cell = new Rect( rect.left + x * cw + CellSpacing, rect.top + y * cw + CellSpacing, cw - CellSpacing, cw - CellSpacing );
-				Render.UI.Box( cell, color );
+				Render.Draw2D.Box( cell, color );
 			}
 		}
 
@@ -145,11 +145,11 @@ public class PixelWall : RootPanel
 		//
 		for ( int x = 0; x < Columns; x++ )
 		{
-			Render.UI.Text( new Vector2( Offsetleft - 30, rect.top + x * CellSize + 4 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
-			Render.UI.Text( new Vector2( rect.right + 5, rect.top + x * CellSize + 4 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
+			Render.Draw2D.Text( new Vector2( Offsetleft - 30, rect.top + x * CellSize + 4 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
+			Render.Draw2D.Text( new Vector2( rect.right + 5, rect.top + x * CellSize + 4 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
 
-			Render.UI.Text( new Vector2( rect.left + x * CellSize + 5, 26 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
-			Render.UI.Text( new Vector2( rect.left + x * CellSize + 5, rect.bottom + 5 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
+			Render.Draw2D.Text( new Vector2( rect.left + x * CellSize + 5, 26 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
+			Render.Draw2D.Text( new Vector2( rect.left + x * CellSize + 5, rect.bottom + 5 ), Color.White.WithAlpha( 0.7f ), $"{x + 1}", "Poppins", 13, fontWeight: 600 );
 		}
 
 		//
@@ -162,7 +162,7 @@ public class PixelWall : RootPanel
 			{
 				highlight = Easing.EaseOut( highlight );
 
-				Render.UI.BoxWithBorder( entry.Rect, Color.Transparent, HighlightBorder * highlight, Color.Random, corners: new Vector4( 2.0f ) );
+				Render.Draw2D.BoxWithBorder( entry.Rect, Color.Transparent, HighlightBorder * highlight, Color.Random, corners: new Vector4( 2.0f ) );
 			}
 
 			var age = entry.TimeSinceCreated.Relative.LerpInverse( 5, 4f );
@@ -173,12 +173,12 @@ public class PixelWall : RootPanel
 
 				var r = new Rect( pos.x, pos.y, 2, 2 );
 
-				Render.UI.Box( r, Color.White.WithAlpha( age ), new Vector4( 10.0f ) );
+				Render.Draw2D.Box( r, Color.White.WithAlpha( age ), new Vector4( 10.0f ) );
 			}
 
-			Render.UI.Text( entry.Position + Vector2.One * -0.6f, Color.Black.WithAlpha( age ), entry.Text, "Poppins", 13, fontWeight: 800 );
-			Render.UI.Text( entry.Position + Vector2.One * 0.6f, Color.Black.WithAlpha( age ), entry.Text, "Poppins", 13, fontWeight: 800 );
-			Render.UI.Text( entry.Position, entry.Color.WithAlpha( age ), entry.Text, "Poppins", 13, fontWeight: 800 );
+			Render.Draw2D.Text( entry.Position + Vector2.One * -0.6f, Color.Black.WithAlpha( age ), entry.Text, "Poppins", 13, fontWeight: 800 );
+			Render.Draw2D.Text( entry.Position + Vector2.One * 0.6f, Color.Black.WithAlpha( age ), entry.Text, "Poppins", 13, fontWeight: 800 );
+			Render.Draw2D.Text( entry.Position, entry.Color.WithAlpha( age ), entry.Text, "Poppins", 13, fontWeight: 800 );
 
 			var op = entry.OriginalPosition * 0.05f;
 
