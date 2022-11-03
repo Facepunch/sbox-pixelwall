@@ -3,11 +3,33 @@
   "Type": "game",
   "Org": "facepunch",
   "Ident": "pixelwall",
+  "Tags": "steaming passive",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
   "ResourcePaths": null,
   "HasCode": true,
   "CodePath": "code",
-  "RootNamespace": "Sandbox"
+  "RootNamespace": "Sandbox",
+  "Metadata": {
+    "MaxPlayers": 1,
+    "MinPlayers": 1,
+    "ParentPackage": "",
+    "GameNetworkType": "Singleplayer",
+    "MapSelect": "Empty",
+    "PerMapRanking": false,
+    "RankType": "None",
+    "Physics": {
+      "SubSteps": 1,
+      "TimeScale": 1,
+      "Gravity": "0,0,-800",
+      "AirDensity": 1.2,
+      "SleepingEnabled": true,
+      "SimulationMode": "Continuous",
+      "PositionIterations": 2,
+      "VelocityIterations": 8,
+      "SoftBodyIterations": 1,
+      "SoftBodySubsteps": 1
+    }
+  }
 }
